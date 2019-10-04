@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "224505909233",
+    "firebase_url": "https://driver-master-master.firebaseio.com",
+    "project_id": "driver-master-master",
+    "storage_bucket": "driver-master-master.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224505909233:android:6b1cdf58611d345bf5fe50",
+        "android_client_info": {
+          "package_name": "creo.com.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224505909233-duuf54jrl0kd4bd9rouulr91tgabha6t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "creo.com.driver",
+            "certificate_hash": "bf357c82467304877c1322e73d92da3267423ba2"
+          }
+        },
+        {
+          "client_id": "224505909233-a9qu1es637co0jj1c81p99mpf4bt9eor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo08pekP1Pc8993KKgdETJH3nqsLTa_MA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224505909233-a9qu1es637co0jj1c81p99mpf4bt9eor.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Receipt">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/scroll"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#1AAEF4"
+                android:text="Receipt"
+                android:textColor="#fff"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:textSize="22dp"
+                android:id="@+id/text"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/text"
+                android:id="@+id/session"
+                android:layout_marginTop="10dp"
+                android:text="Session has ended!"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:gravity="center_vertical"
+                />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@id/card"
+                android:layout_below="@+id/session"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
+                app:cardElevation="20dp"
+                android:layout_height="500dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/img"
+                    android:src="@drawable/person"
+                    android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/rate"
+                        android:text="Rating by Customer"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:layout_below="@+id/img"/>
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:rating="4"
+                        android:id="@+id/star"
+                        android:layout_below="@+id/rate"
+                        android:layout_centerInParent="true"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/star"
+                        android:id="@+id/tr"
+                        android:layout_marginTop="20dp"
+                        android:text="WERE YOU SATISFIED ?"
+                        android:textAlignment="center"
+                        android:gravity="center_vertical"
+                        android:textColor="#000"
+                        />
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/textn1"
+                        android:text="NO"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="100dp"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/tr"
+                        android:textColor="#1AAEF4"
+                        android:background="@drawable/reg"
+                        android:textAlignment="center"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center_vertical"
+                        />
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/textn"
+                        android:text="YES"
+                        android:layout_marginTop="10dp"
+                       android:layout_marginEnd="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/tr"
+                        android:textColor="#fff"
+                        android:background="@drawable/selc"
+                        android:textAlignment="center"
+                        android:gravity="center_vertical"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textn1"
+                        android:layout_marginStart="70dp"
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/ratee"
+                        android:layout_alignParentStart="true"
+                        android:text="RATE"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textn1"
+                        android:id="@+id/cost"
+                        android:layout_marginEnd="70dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="20dp"
+                        android:text="$3/min"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ratee"
+                        android:layout_marginStart="70dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_alignParentStart="true"
+                        android:text="DURATION"
+                        android:id="@+id/duration"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cost"
+                        android:id="@+id/dur"
+                        android:layout_marginEnd="70dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="20dp"
+                        android:text="20 min"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/duration"
+                        android:layout_marginStart="70dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_alignParentStart="true"
+                        android:text="TOTAL"
+                        android:id="@+id/total"
+                        android:textAlignment="center"
+                        android:textColor="#1AAEF4"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dur"
+                        android:id="@+id/tot"
+                        android:layout_marginEnd="70dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="20dp"
+                        android:text="$60"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textColor="#1AAEF4"
+                        android:textSize="16sp"
+                        />
+
+                </RelativeLayout>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

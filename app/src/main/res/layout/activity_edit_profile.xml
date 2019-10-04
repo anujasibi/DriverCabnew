@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfile">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/scroll"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#1AAEF4"
+                android:text="Edit Profile"
+                android:textColor="#fff"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:textSize="22dp"
+                android:id="@+id/text"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="50dp"
+                android:id="@+id/img"
+                android:layout_below="@+id/text"
+                android:src="@drawable/person"
+                android:layout_centerHorizontal="true"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:id="@+id/img1"
+                android:layout_below="@+id/img"
+                android:layout_toEndOf="@+id/img"
+                android:src="@drawable/more"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img1"
+                android:layout_marginTop="30dp"
+                android:id="@+id/na"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Name"
+
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/name"
+                android:drawableRight="@drawable/more"
+                android:layout_below="@+id/na"
+                android:focusable="false"
+
+                android:cursorVisible="false"
+                android:background="@drawable/edit"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_marginTop="30dp"
+                android:id="@+id/hom"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Home Location"
+
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/home"
+                android:layout_below="@+id/hom"
+                android:drawableRight="@drawable/more"
+                android:background="@drawable/edit"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/home"
+                android:layout_marginTop="30dp"
+                android:id="@+id/des"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Description"
+
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/description"
+                android:layout_below="@+id/des"
+                android:background="@drawable/edit"
+                android:drawableRight="@drawable/more"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/selc"
+                android:text="Update Profile"
+                android:layout_below="@+id/description"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="#fff"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:id="@+id/textv"/>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

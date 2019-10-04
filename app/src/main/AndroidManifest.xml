@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="creo.com.driver">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -21,9 +22,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        tools:node="merge"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".vechiclephoto"></activity>
+        <activity android:name=".Tracking"></activity>
+        <activity android:name=".bookingdetails" />
+        <activity android:name=".vechiclephoto" />
         <activity android:name=".Noc" />
         <activity android:name=".vehiclefitness" />
         <activity android:name=".touristpermit" />
@@ -49,7 +53,12 @@
             android:value="AIzaSyBEMkM4tXPGJsbm7Nrr_ZXXkj_PZr4z2_g" />
 
         <activity android:name=".otpverify" />
-        <activity android:name=".MainUI" />
+        <activity android:name=".MainUI" >
+            <intent-filter>
+                <action android:name="MainUI" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ForgotPassword" />
         <activity android:name=".EditProfile" />
         <activity android:name=".CustomerDetails" />
@@ -63,18 +72,18 @@
         <activity android:name=".card" />
         <activity android:name=".Profile" />
         <activity android:name=".Review" />
-        <service
-            android:name=".MyFirebaseInstanceIdService">
+
+        <service android:name=".MyFirebaseInstanceIdService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -60,6 +60,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import creo.com.driver.utils.Global;
+import creo.com.driver.utils.SessionManager;
 
 public class MainUI extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener{
 
@@ -88,12 +89,14 @@ public class MainUI extends AppCompatActivity implements OnMapReadyCallback, Goo
     private boolean isPermission;
     Context context=this;
     private String latitude,longitude;
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ui);
+        sessionManager = new SessionManager(this);
 
         Bundle bundle = getIntent().getExtras();
         token = bundle.getString("token");
@@ -429,6 +432,7 @@ public class MainUI extends AppCompatActivity implements OnMapReadyCallback, Goo
                             JSONArray dataArray  = new JSONArray(data);
                             JSONObject jsonObject1=dataArray.optJSONObject(0);
                             id=jsonObject1.optString("trip_id");
+                            sessionManager.setUserid(id);
                             //   JSONObject email=jsonObject1.getJSONObject("email");
                             Log.d("email","mm"+id);
 

@@ -14,6 +14,16 @@ public class SessionManager {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+    public String getUserid() {
+        String pcc = sharedPreferences.getString("uidd","");
+
+        return pcc;
+    }
+
+    public void setUserid(String uidd) {
+        sharedPreferences.edit().putString("uidd",uidd).commit();
+    }
+
     public String getUser_pcc() {
         String pcc = sharedPreferences.getString("pcc","");
 

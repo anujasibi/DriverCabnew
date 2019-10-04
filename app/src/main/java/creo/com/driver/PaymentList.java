@@ -14,6 +14,7 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 public class PaymentList extends AppCompatActivity {
     RelativeLayout rl;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title

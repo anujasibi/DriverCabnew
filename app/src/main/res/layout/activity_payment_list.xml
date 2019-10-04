@@ -79,7 +79,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/textn1"
                 android:layout_toEndOf="@+id/im1"
-                android:text="Credit/Debit Card"
+                android:text="OnlinePayment"
                 android:textStyle="bold"
                 android:textColor="#000"
                 android:textAlignment="center"
@@ -93,43 +93,5 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:id="@+id/cardeee"
-        android:layout_below="@+id/cardee"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        app:cardElevation="2dp"
-        android:layout_height="50dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="30dp"
-                android:id="@+id/im2"
-                android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/paytmn"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/textn2"
-                android:layout_toEndOf="@+id/im2"
-                android:text="Paytm"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:textAlignment="center"
-                android:layout_marginLeft="20dp"
-                android:gravity="center_vertical"
-                />
-
-        </RelativeLayout>
-
-
-
-    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

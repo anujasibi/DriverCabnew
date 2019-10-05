@@ -25,7 +25,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:node="merge">
-        <activity android:name=".PaymentActivity"></activity>
+        <activity android:name=".Pay"></activity>
+        <activity android:name=".PaymentActivity" />
         <activity android:name=".Tracking" />
         <activity android:name=".bookingdetails" />
         <activity android:name=".vechiclephoto" />
@@ -49,8 +50,6 @@
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_live_MquWTYi6ypIVBE" />
-
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

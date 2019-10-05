@@ -1,6 +1,7 @@
 package creo.com.driver;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -13,6 +14,8 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
 public class PaymentList extends AppCompatActivity {
     RelativeLayout rl;
+
+    CardView cardView;
 
 
     @Override
@@ -27,6 +30,15 @@ public class PaymentList extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(PaymentList.this, card.class));
                 Animatoo.animateCard(PaymentList.this);
+            }
+        });
+
+        cardView=findViewById(R.id.cardee);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PaymentList.this,PaymentActivity.class));
             }
         });
 

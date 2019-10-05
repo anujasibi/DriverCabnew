@@ -16,6 +16,7 @@ public class Earning extends AppCompatActivity {
 
     LinearLayout linearChart;
     TextView withdraw;
+    TextView amo,bal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,18 @@ public class Earning extends AppCompatActivity {
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_earning);
+
+        amo=findViewById(R.id.po);
+        bal=findViewById(R.id.re);
+
+        Bundle bundle = getIntent().getExtras();
+        String amount = bundle.getString("earning");
+        String balance = bundle.getString("balance");
+
+        amo.setText(amount);
+
+        bal.setText(balance);
+
         linearChart = (LinearLayout) findViewById(R.id.linearChart);
         withdraw=findViewById(R.id.wao);
         withdraw.setOnClickListener(new View.OnClickListener() {

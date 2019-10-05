@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,8 +34,9 @@ import creo.com.driver.utils.SessionManager;
 public class Tracking extends AppCompatActivity {
     Button track;
     SessionManager sessionManager;
-    public String url="http://creocabs.herokuapp.com/driver/scheduled_trip_reject/trip_id";
+    public String url="http://creocabs.herokuapp.com/driver/scheduled_trip_complete/";
     Context context=this;
+    public String amount,balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +67,13 @@ public class Tracking extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             String ot = jsonObject.optString("message");
                             String status=jsonObject.optString("code");
+                            amount=jsonObject.optString("earning");
+                            balance=jsonObject.optString("balance");
+
                             Log.d("otp","mm"+ot);
                             if(status.equals("200")){
                                 Toast.makeText(Tracking.this, ot, Toast.LENGTH_LONG).show();
-                                showDialog(Tracking.this,"First Custom Dialog");
+                                showDialog(Tracking.this,"Your Total Earning For This Trip is ₹ "+amount);
 
                                /* startActivity(new Intent(searchplace.this,scheduledetails.class));
                                 startActivity(i);*/
@@ -130,14 +135,10 @@ public class Tracking extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-            }
-        });
-
-        Button dialogButton2 = (Button) dialog.findViewById(R.id.btn2);
-        dialogButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
+                Intent intent=new Intent(Tracking.this,Earning.class);
+                intent.putExtra("earning",amount);
+                intent.putExtra("balance",balance);
+                startActivity(intent);
             }
         });
 

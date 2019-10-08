@@ -16,6 +16,7 @@ public class vehicledocument extends AppCompatActivity {
     String model=null;
     String year=null;
     String color=null;
+    String capacity=null;
     String plate=null;
     String rcbook=null;
     String permit=null;
@@ -38,6 +39,7 @@ public class vehicledocument extends AppCompatActivity {
         color=sessionManager.getColor();
         plate=sessionManager.getPlate();
         pho=sessionManager.getPho();
+        capacity=sessionManager.getCapacity();
 
 
         rcbook=sessionManager.getRC();
@@ -59,9 +61,9 @@ public class vehicledocument extends AppCompatActivity {
 
 
 
-        if(make.equals("")||model.equals("")||year.equals("")||color.equals("")||plate.equals("")){
+        if(make.equals("")||model.equals("")||year.equals("")||color.equals("")||plate.equals("")||capacity.equals("")){
             cardView.setVisibility(View.VISIBLE);
-        } if(!(make.equals("")||model.equals("")||year.equals("")||color.equals("")||plate.equals(""))){
+        } if(!(make.equals("")||model.equals("")||year.equals("")||color.equals("")||plate.equals("")||capacity.equals(""))){
             cardView.setVisibility(View.GONE);
         }
 

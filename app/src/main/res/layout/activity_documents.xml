@@ -19,7 +19,7 @@
                android:layout_height="wrap_content"
                android:textStyle="bold"
                android:id="@+id/base"
-               android:text="Please add ypur personal details"
+               android:text="Please add your personal details"
                android:textColor="#1AAEF4"
                android:textSize="20dp"
                android:layout_marginTop="20dp"

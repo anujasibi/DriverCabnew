@@ -72,7 +72,13 @@
         <activity android:name=".PaymentList" />
         <activity android:name=".Earning" />
         <activity android:name=".Receipt" />
-        <activity android:name=".Login" />
+        <activity android:name=".Login" >
+            <intent-filter>
+                <action android:name="Login" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Register" />
         <activity android:name=".card" />

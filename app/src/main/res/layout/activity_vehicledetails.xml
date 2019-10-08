@@ -164,6 +164,36 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/teeeeeeeeee"
+                android:layout_below="@+id/teeeeeeeee"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="2dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/capacity"
+                    android:paddingTop="5dp"
+                    android:hint="Seating Capacity"
+                    android:textColorHint="#000"
+                    android:textColor="#000"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_height="match_parent" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
 
 
 
@@ -177,7 +207,7 @@
                 android:text="Submit"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:layout_below="@+id/teeeeeeeee"
+                android:layout_below="@+id/teeeeeeeeee"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"

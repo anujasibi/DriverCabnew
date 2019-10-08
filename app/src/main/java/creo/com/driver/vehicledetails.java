@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -31,13 +32,14 @@ import creo.com.driver.utils.SessionManager;
 
 public class vehicledetails extends AppCompatActivity {
 
-    EditText brand,model,year,plate,color;
+    EditText brand,model,year,plate,color,capacity;
     TextView button;
     Context context=this;
     String phone_no = null;
     private String URLline = Global.BASE_URL+"driver/add_cab/";
     private ProgressDialog dialog ;
     SessionManager sessionManager;
+    boolean doubleBackToExitPressedOnce = false;
 
 
     @Override
@@ -52,6 +54,7 @@ public class vehicledetails extends AppCompatActivity {
         year=findViewById(R.id.year);
         plate=findViewById(R.id.plate);
         color=findViewById(R.id.color);
+        capacity=findViewById(R.id.capacity);
         dialog=new ProgressDialog(vehicledetails.this,R.style.MyAlertDialogStyle);
 
         button=findViewById(R.id.button);
@@ -86,6 +89,7 @@ public class vehicledetails extends AppCompatActivity {
                                     sessionManager.setYear(year.getText().toString());
                                     sessionManager.setPlate(plate.getText().toString());
                                     sessionManager.setColor(color.getText().toString());
+                                    sessionManager.setCapacity(capacity.getText().toString());
                                     Intent intent = new Intent(vehicledetails.this, vehicledocument.class);
                                     startActivity(intent);
                                 }
@@ -122,8 +126,9 @@ public class vehicledetails extends AppCompatActivity {
                 params.put("make",brand.getText().toString());
                 params.put("model",model.getText().toString());
                 params.put("year",year.getText().toString());
-                params.put("color",plate.getText().toString());
-                params.put("number_plate",color.getText().toString());
+                params.put("color",color.getText().toString());
+                params.put("number_plate",plate.getText().toString());
+                params.put("capacity",capacity.getText().toString());
                 return params;
             }
             @Override
@@ -139,6 +144,25 @@ public class vehicledetails extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
 
+    }
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            finishAffinity();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
     }

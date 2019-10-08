@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -77,6 +78,7 @@ public class registernew extends AppCompatActivity {
     private Uri uri,ut,up;
     Context context=this;
     String filePath;
+    private ProgressDialog dialog ;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
 
@@ -87,6 +89,7 @@ public class registernew extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registernew);
         requestMultiplePermissions();
+        dialog=new ProgressDialog(registernew.this,R.style.MyAlertDialogStyle);
 
 
         immm=findViewById(R.id.photo);
@@ -120,6 +123,8 @@ public class registernew extends AppCompatActivity {
                     Toast.makeText(registernew.this,"All fields are required",Toast.LENGTH_LONG).show();
                 }
                 else {
+                    dialog.setMessage("Loading");
+                    dialog.show();
                     uploadToServer(filePath);
 
                 }
@@ -510,11 +515,13 @@ public class registernew extends AppCompatActivity {
                     String result = response.body().getSuccess();
                     Toast.makeText(registernew.this, result, Toast.LENGTH_LONG).show();
                     if (result.equals("success")) {
+                        dialog.dismiss();
                         Intent intent = new Intent(registernew.this, Login.class);
                         startActivity(intent);
                         Animatoo.animateSlideLeft(registernew.this);
 
                     } else {
+                        dialog.dismiss();
                         Toast.makeText(registernew.this, result, Toast.LENGTH_LONG).show();
 
                     }

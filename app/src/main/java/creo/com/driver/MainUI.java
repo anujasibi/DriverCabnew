@@ -15,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -90,6 +91,8 @@ public class MainUI extends AppCompatActivity implements OnMapReadyCallback, Goo
     Context context=this;
     private String latitude,longitude;
     SessionManager sessionManager;
+    boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
@@ -98,7 +101,24 @@ public class MainUI extends AppCompatActivity implements OnMapReadyCallback, Goo
         setContentView(R.layout.activity_main_ui);
         sessionManager = new SessionManager(this);
 
-        Bundle bundle = getIntent().getExtras();
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        builder.setMessage("Please Be Online To Get User Request")
+
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(MainUI.this, "", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
+
+
+                    AlertDialog alert = builder.create();
+alert.show();
+
+
+                        Bundle bundle = getIntent().getExtras();
         token = bundle.getString("token");
         Log.d("phone","mm"+token);
 
@@ -428,41 +448,36 @@ public class MainUI extends AppCompatActivity implements OnMapReadyCallback, Goo
                             JSONObject jsonObject = new JSONObject(response);
                             String ot = jsonObject.optString("message");
                             String status=jsonObject.optString("code");
-                            String data=jsonObject.optString("data");
-                            JSONArray dataArray  = new JSONArray(data);
-                            JSONObject jsonObject1=dataArray.optJSONObject(0);
-                            id=jsonObject1.optString("trip_id");
-                            sessionManager.setUserid(id);
-                            //   JSONObject email=jsonObject1.getJSONObject("email");
-                            Log.d("email","mm"+id);
+                            if(status.equals("200")) {
+                                String data = jsonObject.optString("data");
+                                JSONArray dataArray = new JSONArray(data);
+                                JSONObject jsonObject1 = dataArray.optJSONObject(0);
+                                id = jsonObject1.optString("trip_id");
+                                sessionManager.setUserid(id);
+                                //   JSONObject email=jsonObject1.getJSONObject("email");
+                                Log.d("email", "mm" + id);
 
-                            // JSONObject phone=jsonObject1.getJSONObject("phone");
-                            source=jsonObject1.optString("from");
-                            Log.d("phone","mm"+source);
-                            sources.setText(source);
+                                // JSONObject phone=jsonObject1.getJSONObject("phone");
+                                source = jsonObject1.optString("from");
+                                Log.d("phone", "mm" + source);
+                                sources.setText(source);
 
-                            dests=jsonObject1.optString("to");
-                            Log.d("phone","mm"+dests);
+                                dests = jsonObject1.optString("to");
+                                Log.d("phone", "mm" + dests);
 
-                            dest.setText(dests);
+                                dest.setText(dests);
 
-                            dates=jsonObject1.optString("date");
+                                dates = jsonObject1.optString("date");
 
-                            date.setText(dates);
-                            Log.d("phone","mm"+dates);
-                            timez=jsonObject1.optString("time");
-                            times.setText(timez);
-                            Log.d("phone","mm"+timez);
-
-
-
+                                date.setText(dates);
+                                Log.d("phone", "mm" + dates);
+                                timez = jsonObject1.optString("time");
+                                times.setText(timez);
+                                Log.d("phone", "mm" + timez);
 
 
-                            Log.d("otp","mm"+ot);
-                            if(status.equals("200")){
-                                Toast.makeText(MainUI.this, ot, Toast.LENGTH_LONG).show();
-                               /* startActivity(new Intent(searchplace.this,scheduledetails.class));
-                                startActivity(i);*/
+                                Log.d("otp", "mm" + ot);
+
                             }
                             else{
                                 Toast.makeText(MainUI.this, "Invalid Password."+ot, Toast.LENGTH_LONG).show();
@@ -627,6 +642,25 @@ public class MainUI extends AppCompatActivity implements OnMapReadyCallback, Goo
         requestQueue.add(stringRequest);
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            finishAffinity();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
 

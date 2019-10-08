@@ -83,6 +83,13 @@ public class SessionManager {
 
         return  sharedPreferences.getString("color","");
     }
+    public void setCapacity(String capacity){
+        sharedPreferences.edit().putString("capacity",capacity).commit();
+    }
+    public String getCapacity(){
+
+        return  sharedPreferences.getString("capacity","");
+    }
     public void setRC(String rcbook){
         sharedPreferences.edit().putString("rcbook",rcbook).commit();
     }

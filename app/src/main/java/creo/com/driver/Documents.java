@@ -5,9 +5,11 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 import creo.com.driver.utils.SessionManager;
 
@@ -17,6 +19,7 @@ public class Documents extends AppCompatActivity {
     String pcc=null;
     String license=null;
     String address_proof=null;
+    boolean doubleBackToExitPressedOnce = false;
 
 
 
@@ -28,9 +31,14 @@ public class Documents extends AppCompatActivity {
         setContentView(R.layout.activity_documents);
         sessionManager = new SessionManager(this);
 
+
+
         cardView=findViewById(R.id.pcc);
         cardv=findViewById(R.id.dril);
         cardi=findViewById(R.id.cid);
+        cardView.setVisibility(View.VISIBLE);
+        cardv.setVisibility(View.VISIBLE);
+        cardi.setVisibility(View.VISIBLE);
 
         Bundle bundle = getIntent().getExtras();
         pcc = sessionManager.getUser_pcc();
@@ -83,4 +91,24 @@ public class Documents extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            finishAffinity();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
+
 }

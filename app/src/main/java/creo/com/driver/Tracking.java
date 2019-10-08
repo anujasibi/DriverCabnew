@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,11 +38,15 @@ public class Tracking extends AppCompatActivity {
     public String url="http://creocabs.herokuapp.com/driver/scheduled_trip_complete/";
     Context context=this;
     public String amount,balance;
+    private ProgressDialog dialogs ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracking);
+
+        dialogs=new ProgressDialog(Tracking.this,R.style.MyAlertDialogStyle);
+
 
         track=findViewById(R.id.button2);
         sessionManager = new SessionManager(this);
@@ -49,6 +54,8 @@ public class Tracking extends AppCompatActivity {
         track.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialogs.setMessage("Loading");
+                dialogs.show();
                 endtrip();
             }
         });
@@ -60,7 +67,7 @@ public class Tracking extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // dialog.dismiss();
+                        dialogs.dismiss();
                         Toast.makeText(Tracking.this,response,Toast.LENGTH_LONG).show();
                         //parseData(response);
                         try {

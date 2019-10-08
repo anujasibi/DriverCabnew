@@ -2,9 +2,11 @@ package creo.com.driver;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -35,6 +37,8 @@ public class CustomerDetails extends AppCompatActivity {
     private String nam,pho,sour,des;
     private String URLli="http://creocabs.herokuapp.com/driver/accept_scheduled_trip/trip_id";
     SessionManager sessionManager;
+    private ProgressDialog dialog ;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,9 @@ public class CustomerDetails extends AppCompatActivity {
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_details);
+        dialog=new ProgressDialog(CustomerDetails.this,R.style.MyAlertDialogStyle);
+        dialog.setMessage("Loading");
+        dialog.show();
         na=findViewById(R.id.te);
         ph=findViewById(R.id.email);
         sou=findViewById(R.id.phone);
@@ -65,7 +72,7 @@ public class CustomerDetails extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // dialog.dismiss();
+                        dialog.dismiss();
                         Toast.makeText(CustomerDetails.this,response,Toast.LENGTH_LONG).show();
                         //parseData(response);
                         try {
@@ -144,6 +151,24 @@ public class CustomerDetails extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            finishAffinity();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
 }

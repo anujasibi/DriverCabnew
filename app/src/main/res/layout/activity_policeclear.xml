@@ -31,8 +31,8 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/police"
+        android:layout_height="wrap_content"
+        android:src="@drawable/license"
         android:id="@+id/photo"
         android:layout_below="@+id/choose"
         android:layout_marginBottom="10dp"

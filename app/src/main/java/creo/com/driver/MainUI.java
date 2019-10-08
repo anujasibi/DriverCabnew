@@ -448,12 +448,13 @@ alert.show();
                             JSONObject jsonObject = new JSONObject(response);
                             String ot = jsonObject.optString("message");
                             String status=jsonObject.optString("code");
+                            Log.d("status","mm"+status);
                             if(status.equals("200")) {
                                 String data = jsonObject.optString("data");
                                 JSONArray dataArray = new JSONArray(data);
                                 JSONObject jsonObject1 = dataArray.optJSONObject(0);
-                                id = jsonObject1.optString("trip_id");
-                                sessionManager.setUserid(id);
+                               id = jsonObject1.optString("trip_id");
+                               sessionManager.setUserid(id);
                                 //   JSONObject email=jsonObject1.getJSONObject("email");
                                 Log.d("email", "mm" + id);
 
@@ -479,10 +480,12 @@ alert.show();
                                 Log.d("otp", "mm" + ot);
 
                             }
-                            else{
-                                Toast.makeText(MainUI.this, "Invalid Password."+ot, Toast.LENGTH_LONG).show();
+                            else if(status.equals("201")){
+                                Toast.makeText(MainUI.this, "Please Wait to get the user request."+ot, Toast.LENGTH_LONG).show();
 
-
+                            }
+                            else {
+                                Toast.makeText(MainUI.this, "Something went wrong."+ot, Toast.LENGTH_LONG).show();
                             }
 
                         } catch (JSONException e) {

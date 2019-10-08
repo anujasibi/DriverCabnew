@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
     private ProgressDialog dialog ;
     private String token;
     private String token_firebase;
-FirebaseAnalytics firebaseAnalytics;
+    FirebaseAnalytics firebaseAnalytics;
     private String URLline = Global.BASE_URL+"driver/driver_login/";
     private String URLlinenew = Global.BASE_URL+"driver/check_driver_proof/";
 
@@ -59,7 +59,7 @@ FirebaseAnalytics firebaseAnalytics;
         textView=findViewById(R.id.login);
         firebaseAnalytics = FirebaseAnalytics.getInstance(context);
          token_firebase = FirebaseInstanceId.getInstance().getToken();
-        Log.d("tokkkken","lhykhiyh"+token);
+        Log.d("tokkkken","lhykhiyh"+token_firebase);
         phoneno=findViewById(R.id.name);
         password=findViewById(R.id.namee);
         forgot=findViewById(R.id.forgot);
@@ -328,5 +328,6 @@ alert.show();
 
 
     }
+
 
 }

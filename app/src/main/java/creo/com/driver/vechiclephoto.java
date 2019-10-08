@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -147,6 +148,7 @@ public class vechiclephoto extends AppCompatActivity {
                 filePath = getRealPathFromURIPath(uri, vechiclephoto.this);
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
+                    bitmap = getResizedBitmap(bitmap, 400);
                     String path = saveImage(bitmap);
                     Toast.makeText(vechiclephoto.this, "Image Saved!", Toast.LENGTH_SHORT).show();
                     immm.setImageBitmap(bitmap);
@@ -164,12 +166,52 @@ public class vechiclephoto extends AppCompatActivity {
             immm.setImageBitmap(thumbnail);
             //  saveImage(thumbnail);
             Toast.makeText(vechiclephoto.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+            Uri tempUri = getImageUri(getApplicationContext(), thumbnail);
+            filePath= (getRealPathFromURI(tempUri));
+            Log.d("filepath","mm"+filePath);
 
         }
 
 
 
     }
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        String path = "";
+        if (getContentResolver() != null) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            if (cursor != null) {
+                cursor.moveToFirst();
+                int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                path = cursor.getString(idx);
+                cursor.close();
+            }
+        }
+        return path;
+    }
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+
 
 
 

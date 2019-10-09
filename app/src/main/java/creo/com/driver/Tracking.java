@@ -75,7 +75,9 @@ public class Tracking extends AppCompatActivity {
                             String ot = jsonObject.optString("message");
                             String status=jsonObject.optString("code");
                             amount=jsonObject.optString("earning");
+                            sessionManager.setEarning("earnings");
                             balance=jsonObject.optString("balance");
+                            sessionManager.setBalance("balance");
 
                             Log.d("otp","mm"+ot);
                             if(status.equals("200")){

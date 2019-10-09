@@ -12,11 +12,14 @@ import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
+import creo.com.driver.utils.SessionManager;
+
 public class Earning extends AppCompatActivity {
 
     LinearLayout linearChart;
     TextView withdraw;
     TextView amo,bal;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +27,18 @@ public class Earning extends AppCompatActivity {
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_earning);
+        sessionManager = new SessionManager(this);
 
         amo=findViewById(R.id.po);
         bal=findViewById(R.id.re);
 
-        Bundle bundle = getIntent().getExtras();
+       /* Bundle bundle = getIntent().getExtras();
         String amount = bundle.getString("earning");
         String balance = bundle.getString("balance");
+*/
+        amo.setText(sessionManager.getEarning());
 
-        amo.setText(amount);
-
-        bal.setText(balance);
+        bal.setText(sessionManager.getBalance());
 
         linearChart = (LinearLayout) findViewById(R.id.linearChart);
         withdraw=findViewById(R.id.wao);

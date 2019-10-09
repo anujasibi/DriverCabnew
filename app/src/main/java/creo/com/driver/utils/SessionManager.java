@@ -139,6 +139,20 @@ public class SessionManager {
 
         return  sharedPreferences.getString("img","");
     }
+    public void setEarning(String earnings){
+        sharedPreferences.edit().putString("earnings",earnings).commit();
+    }
+    public String getEarning(){
+
+        return  sharedPreferences.getString("earnings","");
+    }
+    public void setBalance(String balance){
+        sharedPreferences.edit().putString("balance",balance).commit();
+    }
+    public String getBalance(){
+
+        return  sharedPreferences.getString("balance","");
+    }
 
 
 
